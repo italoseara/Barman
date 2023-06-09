@@ -5,10 +5,11 @@ export function loadEvents(client: Bot): void {
     let loaded: number = 0;
     let failed: number = 0;
 
-    const files: string[] = loadFiles("./dist/events");
+    const files: string[] = loadFiles("./dist/src/events");
+    const cwd: string = process.cwd().replace(/\\/g, "/") + "/";
 
     for (const file of files) {
-        const event: any = require(process.cwd().replace(/\\/g, "/") + "/" + file);
+        const event: { name: string; once: boolean; execute: any } = require(cwd + file);
 
         if (!event.name) {
             failed++;
@@ -21,5 +22,5 @@ export function loadEvents(client: Bot): void {
         loaded++;
     }
 
-    console.log(`Loaded ${loaded} events, ${failed} failed.`);
+    console.log(`Loaded ${loaded} events. Failed to load ${failed} events.`);
 }

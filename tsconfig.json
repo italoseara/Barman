@@ -1,6 +1,6 @@
 {
     "include": ["src/**/*.ts"],
-    "exclude": ["node_modules"],
+    "exclude": ["node_modules", "*.json"],
     "compilerOptions": {
         "target": "es2020",
         "module": "commonjs",
@@ -16,5 +16,6 @@
         "noLib": false,
         "preserveConstEnums": true,
         "allowJs": true,
-    },
+        "resolveJsonModule": true
+    }
 }
