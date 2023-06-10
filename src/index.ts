@@ -17,4 +17,4 @@ const client = new Bot({
 
 loadEvents(client);
 
-client.start(process.env.DISCORD_TOKEN);
+client.start(process.env.TOKEN);

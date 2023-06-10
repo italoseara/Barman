@@ -4,7 +4,9 @@ import { Bot } from "../classes/bot";
 export function loadCommands(client: Bot): void {
     const { commands, config, application, guilds } = client;
 
+    // Clear the previous commands
     commands.clear();
+    application.commands.set([]);
 
     let loaded: number = 0;
     let failed: number = 0;

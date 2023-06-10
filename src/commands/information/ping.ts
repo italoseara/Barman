@@ -1,6 +1,6 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
 import { Bot } from "../../classes/bot";
-import { reply } from "../../systems/reply";
+import { AlertType, alert } from "../../systems/alert";
 
 export const data: SlashCommandBuilder = new SlashCommandBuilder()
     .setName("ping")
@@ -13,5 +13,8 @@ export async function execute(
     const { emojiList } = client;
     const ping: number = interaction.createdTimestamp - Date.now();
 
-    await reply(interaction, emojiList.timer, `Pong! Latência: ${ping}ms.`);
+    await alert(interaction, {
+        description: `${emojiList.pong} **Pong!** Latência: ${ping}ms\n`,
+        type: AlertType.SUCCESS,
+    });
 }
