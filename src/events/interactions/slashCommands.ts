@@ -19,8 +19,9 @@ export async function execute(
 
     if (!command) {
         await alert(interaction, {
-            title: `${emojiList.error} Error`,
-            description: `The command \`${commandName}\` does not exist.`,
+            title: `${emojiList.error} Erro`,
+            description: `O comando \`${commandName}\` não existe.`,
+            footer: { text: "Use /help para ver a lista de comandos." },
             type: AlertType.ERROR,
             ephemeral: true,
         });
@@ -29,8 +30,9 @@ export async function execute(
 
     if (command.devOnly && !client.config.devs.includes(user.id)) {
         await alert(interaction, {
-            title: `${emojiList.error} Error`,
-            description: "This command is only available to developers.",
+            title: `${emojiList.error} Erro`,
+            description: "Este comando é restrito aos desenvolvedores do bot.",
+            footer: { text: "Use /help para ver a lista de comandos." },
             type: AlertType.ERROR,
             ephemeral: true,
         });
@@ -42,8 +44,9 @@ export async function execute(
     } catch (error) {
         console.error(error);
         await alert(interaction, {
-            title: `${emojiList.error} Error`,
-            description: `An error occurred while executing the command \`${commandName}\``,
+            title: `${emojiList.error} Erro`,
+            description: `Um erro ocorreu na execução do comando \`${commandName}\``,
+            footer: { text: "Contate um desenvolvedor." },
             type: AlertType.ERROR,
             ephemeral: true,
         });

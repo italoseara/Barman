@@ -10,11 +10,11 @@ export async function execute(
     interaction: ChatInputCommandInteraction,
     client: Bot
 ): Promise<void> {
-    const { emojiList } = client;
-    const ping: number = interaction.createdTimestamp - Date.now();
+    const { emojiList, ws } = client;
 
     await alert(interaction, {
-        description: `${emojiList.pong} **Pong!** Latência: ${ping}ms\n`,
+        description: `${emojiList.pong} **Pong!** Latência da API: ${ws.ping}ms\n`,
+        footer: { text: "Latência da API é a latência entre o bot e o Discord." },
         type: AlertType.SUCCESS,
     });
 }
